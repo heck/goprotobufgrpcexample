@@ -16,12 +16,11 @@ const (
 	port = ":50051"
 )
 
-// server is used to implement helloworld.GreeterServer.
 type server struct {
 	pb.UnimplementedMyPersonServiceServer
 }
 
-// SayHello implements helloworld.GreeterServer
+// GetPerson is the implementation of the gRPC interface specified in person.proto
 func (s *server) GetPerson(ctx context.Context, in *pb.MyPersonRequest) (*pb.MyPersonResponse, error) {
 	log.Printf("Received: %v", in.GetId())
 	return &pb.MyPersonResponse{
