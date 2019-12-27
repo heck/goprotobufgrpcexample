@@ -1,5 +1,3 @@
-//go:generate protoc -I ../../api --go_out=plugins=grpc:../../api ../../api/person.proto
-
 package main
 
 // stolen from: https://github.com/grpc/grpc-go/blob/master/examples/helloworld/greeter_server/main.go
@@ -10,6 +8,7 @@ import (
 	"net"
 
 	pb "github.com/heck/goprotobufgrpcexample/api/mypersonpkg"
+
 	"google.golang.org/grpc"
 )
 
@@ -25,10 +24,10 @@ type server struct {
 // SayHello implements helloworld.GreeterServer
 func (s *server) GetPerson(ctx context.Context, in *pb.MyPersonRequest) (*pb.MyPersonResponse, error) {
 	log.Printf("Received: %v", in.GetId())
-	return &pb.MyPersonRsponse{
-		id:   in.GetId(),
-		name: "Harvey Mud",
-		age:  107,
+	return &pb.MyPersonResponse{
+		Id:   in.GetId(),
+		Name: "Harvey Mud",
+		Age:  107,
 	}, nil
 }
 
