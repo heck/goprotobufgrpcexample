@@ -1,0 +1,17 @@
+syntax="proto3";
+
+package mypersonpkg;
+
+message MyPersonRequest {
+      int32 id = 1;
+}
+
+message MyPersonResponse {
+      int32 id = 1;
+      string name = 2;
+      int32 age = 3;
+}
+
+service MyPersonService {
+    rpc GetPerson (MyPersonRequest) returns (MyPersonResponse) {}
+}
